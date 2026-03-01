@@ -11,21 +11,29 @@ export default function CTABanner() {
           paddingBottom: "72px",
         }}
       >
-        {/* Banner Container */}
+        {/* Banner — same flex layout as original, padding on wrapper */}
         <div
-          className="relative overflow-hidden"
+          className="relative"
           style={{
-            backgroundColor: "#4640DE",
             padding: "72px 80px",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            minHeight: "340px",
-            clipPath: "polygon(80px 0%, 100% 0%, 100% calc(100% - 80px), calc(100% - 80px) 100%, 0% 100%, 0% 80px)",
+            minHeight: "416px",
           }}
         >
-          {/* Left Content */}
-          <div style={{ maxWidth: "400px", flexShrink: 0, zIndex: 10 }}>
+          {/* Purple bg with diagonal cuts — absolute behind everything */}
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundColor: "#4640DE",
+              clipPath: "polygon(130px 0%, 100% 0%, 100% calc(100% - 60px), calc(100% - 130px) 100%, 0% 100%, 0% 60px)",
+              zIndex: 0,
+            }}
+          />
+
+          {/* Left Content — same position as original */}
+          <div style={{ maxWidth: "400px", flexShrink: 0, zIndex: 10, position: "relative" }}>
             <h2
               style={{
                 fontFamily: "'Clash Display', sans-serif",
@@ -69,14 +77,15 @@ export default function CTABanner() {
             </button>
           </div>
 
-          {/* Right — Dashboard Image */}
+          {/* Dashboard — same absolute position, fully visible, NOT clipped */}
           <div
             className="absolute"
             style={{
               right: "70px",
-              top: "70px",
+              bottom: "0px",
               width: "564px",
               height: "346px",
+              zIndex: 10,
             }}
           >
             <Image
@@ -88,7 +97,6 @@ export default function CTABanner() {
                 width: "564px",
                 height: "346px",
                 objectFit: "contain",
-                borderRadius: "8px",
                 boxShadow: "0 20px 60px rgba(0,0,0,0.25)",
               }}
               priority
